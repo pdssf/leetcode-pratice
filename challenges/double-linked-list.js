@@ -153,5 +153,20 @@ class DoubleLinkedList {
             }
         }
     }
-}
 
+    /**
+     * @param {boolean} enable
+     */
+    reverse(enable){
+        let node = this.head
+        let temp = null
+        if(enable){
+            while(node){
+                [node.next, node.previous] = [node.previous, node.next]
+                temp = node
+                node = node.previous
+            }
+            this.head = temp
+        }
+    }
+}
