@@ -1,0 +1,19 @@
+{
+  "name": "leetcode-pratice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdssf/leetcode-pratice.git"
+  },
+  "author": "pdssf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pdssf/leetcode-pratice/issues"
+  },
+  "homepage": "https://github.com/pdssf/leetcode-pratice#readme"
+}
