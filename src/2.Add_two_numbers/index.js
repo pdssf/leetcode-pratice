@@ -27,7 +27,7 @@ var addTwoNumbers = function(l1, l2)  {
         }
         sum+=carr
         carr = 0
-        if(sum > 10){
+        if(sum > 9){
             sum = sum - 10
             carr = 1
         }
