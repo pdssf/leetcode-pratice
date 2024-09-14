@@ -1,3 +1,4 @@
+// import { Heap } from "./heap";
 
 function generateRandomArray(size) {
     const array = [];
@@ -43,7 +44,15 @@ function mergeSort (array) {
     let lastHalf = mergeSort(array.slice(len >>1, len))
     return merger(firstHalf, lastHalf)
 }
-// console.log(mergeSort(generateRandomArray(1000000)))
+
+function mergeSortHelper (array){
+    console.time("Sorting with mergesort")
+    let a = mergeSort(array)
+    console.timeEnd("Sorting with mergesort")
+    return a
+    // Sorting with mergesort: 270.018ms
+}
+// console.log(mergeSortHelper(generateRandomArray(6)))
 
 
 /**
@@ -95,3 +104,82 @@ function bubbleSort (array) {
     return array
 }
 // console.log(bubbleSort(generateRandomArray(10)))
+
+function heapify(array = [], nodeIndex = 0, heapSize) {
+    if(heapSize < 2){
+        return array
+    }
+    let letfChild = 2*nodeIndex + 1
+    let rightChild = 2*nodeIndex + 2
+    let maxElement = nodeIndex
+    if(letfChild < heapSize && array[letfChild] > array[maxElement]){
+        maxElement = letfChild
+    }
+    if(rightChild < heapSize && array[rightChild] > array[maxElement]){
+        maxElement = rightChild
+    }
+    
+    if(maxElement != nodeIndex){
+        [array[maxElement], array[nodeIndex]] = [array[nodeIndex],  array[maxElement]]
+        heapify(array, maxElement, heapSize)
+    }
+    return array
+}
+
+function buildHeap(array =[]) {
+    let length = array.length
+    for(let i = Math.floor(length/2)-1; i >= 0; i--){
+        heapify(array, i, length)
+    }
+}
+
+function heapSort(array){
+    console.time("sorting with heapsort")
+    buildHeap(array)
+    console.log(array)
+    let heapSize = array.length
+    for(let i = heapSize -1; i > 0; i--){
+        [array[i], array[0]] = [array[0], array[i]]
+        heapify(array, 0, i)
+    }
+    console.timeEnd("sorting with heapsort")
+    return array
+    // sorting with heapsort: 321.264ms
+}
+
+function partition (array, left, right){
+    let pivo = array[left]
+    let i = left - 1
+    let j = right + 1
+    while(1){
+        do {
+            i++
+        }while(array[i] < pivo)
+        do{
+            j--
+        }while(array[j] > pivo)
+        if (i >= j) {
+            return j;
+        }
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+function quickSort(array, left, right){
+    if(left < right){
+        let middle = partition(array, left, right)
+        quickSort(array, left, middle)
+        quickSort(array, middle+1, right)
+    }
+    return array
+}
+
+let arr = generateRandomArray(10)
+console.log(quickSort(arr, 0, arr.length -1))
+
+// console.log(heapSort(generateRandomArray(1000000)))
+
+// [ 3164, 4892, 147, 5195, 5902, 984 ]
+// [ 984, 4892, 147, 5195, 5902, 3164]
+// [ 984, 147, 4892, 5195, 5902, 3164]
+// 
