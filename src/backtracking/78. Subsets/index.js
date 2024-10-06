@@ -9,8 +9,6 @@ function subsets (nums) {
         let outSolution = helper(index+1, response)
         return [...inSolution, ...outSolution]
     }
-
-    console.log("foi")
     return helper(0, [])
 }
 
