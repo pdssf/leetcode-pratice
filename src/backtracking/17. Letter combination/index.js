@@ -19,7 +19,6 @@ var letterCombinations = function(digits) {
             ans.push(partial)
             return
         }
-        console.log(mapComb[digits[index]].split(""))
         const charArray = mapComb[digits[index]].split("")
         for(let char of charArray){
             partial+=char
