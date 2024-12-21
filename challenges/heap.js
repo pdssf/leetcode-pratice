@@ -10,23 +10,23 @@ export class Heap {
         return this.heapSize
     }
 
-    heapify(array = [], nodeIndex = 0){
+    heapify(array = [], parentIndex = 0){
         let heapSize = this.heapSize
         if(heapSizeh < 2){
             return []
         }
-        let letfChild = 2*nodeIndex + 1
-        let rightChild = 2*nodeIndex + 2
-        let maxElement = nodeIndex
+        let letfChild = 2*parentIndex + 1
+        let rightChild = 2*parentIndex + 2
+        let maxElement = parentIndex
         if(letfChild < heapSize && array[letfChild] > array[maxElement]){
             maxElement = letfChild
         }
         if(rightChild < heapSize && array[rightChild] > array[maxElement]){
-            maxElement = maxElement
+            maxElement = rightChild
         }
         
-        if(maxElement != nodeIndex){
-            [array[maxElement], array[nodeIndex]] = [array[nodeIndex],  array[maxElement]]
+        if(maxElement != parentIndex){
+            [array[maxElement], array[parentIndex]] = [array[parentIndex],  array[maxElement]]
             this.heapify(array, maxElement)
         }
 
@@ -34,8 +34,7 @@ export class Heap {
     }
 
     buildHeap(array =[]) {
-        let length = array.length
-        for(let i = Math.floor(length/2); i > 0; i--){
+        for(let i = array.length >> 1; i > 0; i--){
             this.heapify(array, i)
         }
     }
