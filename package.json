@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/pdssf/leetcode-pratice/issues"
   },
-  "homepage": "https://github.com/pdssf/leetcode-pratice#readme"
+  "homepage": "https://github.com/pdssf/leetcode-pratice#readme",
+  "dependencies": {
+    "@datastructures-js/priority-queue": "^5.4.0"
+  }
 }
