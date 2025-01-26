@@ -1,32 +1,30 @@
-
-
 class Trie {
     constructor () {
-        this.root = new Map()
+        this.root = {}
     }
 
     insert (word = ""){
         let focus = this.root
-        for(let char of word.split("")){
-            if(focus.has(char)){
-                focus = focus.get(char)
-            } else {
-                focus.set(char, new Map())
+        for(let char of word){
+            if(!focus[char]){
+                focus[char] = {}
             }
+            focus = focus[char]
         }
-        focus.set("word", true)
+        focus["word"] = word
     }
 
     search (word = ""){
         let focus = this.root
-        for(let char of word.split("")){
-            if(focus.has(char)){
-                focus = focus.get(char)
+        for(let char of word){
+
+            if(focus[char]){
+                focus = focus[char]
             } else {
                 return false
             }
         }
-        if(focus.has(word)){
+        if(focus["word"]){
             return true
         }
         return false
@@ -34,9 +32,9 @@ class Trie {
 
     startsWith (prefix = ""){
         let focus = this.root
-        for(let char of prefix.split("")){
-            if(focus.has(char)){
-                focus = focus.get(char)
+        for(let char of prefix){
+            if(focus[char]){
+                focus = focus[char]
             } else {
                 return false
             }
