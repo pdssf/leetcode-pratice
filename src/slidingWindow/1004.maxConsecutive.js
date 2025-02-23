@@ -1,0 +1,5 @@
+
+
+function longestOnes(nums,k){
+    
+}
